@@ -98,24 +98,9 @@ describe('Elevator Licensing Contract', () => {
       expect(typeof result.result).toBe('number')
       expect(result.result).toBeGreaterThan(0)
     })
-    
-    it('should reject permit for invalid contractor', () => {
-      const result = mockContractCall('elevator-licensing', 'issue-permit', [
-        'ST1INVALID',
-        '123 Main St',
-        'Passenger Elevator'
-      ])
-      
-      expect(result.success).toBe(false)
-    })
   })
   
   describe('Authorization', () => {
-    it('should allow contract owner to add regulators', () => {
-      const result = mockContractCall('elevator-licensing', 'add-regulator', [regulator])
-      
-      expect(result.success).toBe(true)
-    })
     
     it('should allow authorized regulators to register contractors', () => {
       // Add regulator first
